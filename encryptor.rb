@@ -9,7 +9,7 @@ class Encryptor
 	Hash[characters.zip(rotated_characters)]
 	end
 	
-  def encrypt_letter(letter,rotation) 
+  def encrypt_letter(letter, rotation) 
 	cipher_for_rotation = cipher(rotation)
 	cipher_for_rotation[letter]
   end
@@ -17,19 +17,19 @@ class Encryptor
   def encrypt(string,rotation)
     letters = string.split("")
 	results = letters.collect do |letter|
-	encrypt_letter(letter,rotation)
+	encrypt_letter(letter, rotation)
 	end
 	results.join
   end
 	
-  def decrypt(string,rotation)
+  def decrypt(string, rotation)
 	neg_rotation = rotation*-1
-	encrypt(string,neg_rotation)
+	encrypt(string, neg_rotation)
   end
 
   def crack(message)
     supported_characters.count.times.collect do |attempt|
-    decrypt(message,attempt)
+    decrypt(message, attempt)
     end
   end
 	
